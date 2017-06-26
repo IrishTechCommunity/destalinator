@@ -1,11 +1,30 @@
-# Name of environmental variable holding a valid Slackbot API token
+# Name of your Slack (Deprecated in favour of the SLACK_NAME env var)
+slack_name: irishtechcommunity
+
+# Name of environment variable holding a valid Slackbot API token
 slackbot_api_token_env_varname: SB_TOKEN
 
-# Name of environmental variable holding a valid general-purpose API token
+# Name of environment variable holding a valid general-purpose API token
 api_token_env_varname: API_TOKEN
 
-# Name of environmental variable determining whether output debug mode is enabled
+# Name of environment variable that determines if destalinator should
+# actually do things to a live slack. Without this environment variable,
+# everything will output in a "dry run" fashion (debug messages should take place,
+# but no changes or messages should affect a live Slack).
+destalinator_activated_env_varname: DESTALINATOR_ACTIVATED
+
+# Name of environment variable determining whether output debug mode is enabled
 output_debug_env_varname: DESTALINATOR_SLACK_VERBOSE
+
+# Name of environment variable for the earliest date to archive stale channels.
+# If this is set, it should be of the form "yyyy-mm-dd" (e.g. "2017-02-19").
+earliest_archive_date_env_varname: EARLIEST_ARCHIVE_DATE
+
+# What should the bot's name be when it posts?
+bot_name: "destalinator"
+
+# What should the bot's avatar be when it posts?
+bot_avatar_url: "https://s3-us-west-1.amazonaws.com/eng-management-docs/bread.png"
 
 # Days of silence before we warn a channel it's going to be archived
 warn_threshold: 30
@@ -13,8 +32,8 @@ warn_threshold: 30
 # Days of silence before we auto-archive a channel
 archive_threshold: 60
 
-# Do not archive before this date
-earliest_archive_date: "2016-07-29"
+# Where should we post "general" announcement messages?
+general_message_channel: "general"
 
 # Where should we announce new channels?
 announce_channel: "zmeta-new-channels"
@@ -37,3 +56,17 @@ ignore_channel_patterns:
 # Users to ignore when considering if a channel is stale
 ignore_users:
   - USLACKBOT
+
+# Which message subtypes count as activity?
+# "None" means the message was typed by a human and is included by default.
+included_subtypes:
+  - bot_message
+  - channel_name
+  - channel_purpose
+  - channel_topic
+  - file_mention
+  - file_share
+  - me_message
+  - message_replied
+  - reply_broadcast
+  - slackbot_response
