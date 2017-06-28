@@ -11,7 +11,7 @@ import os
 if os.getenv("TEST_SCHEDULE"):
     schedule_kwargs = {"hour": "*", "minute": "*/10"}
 else:
-    schedule_kwargs = {"hour": 10}
+    schedule_kwargs = {"hour": "10"}
 
 logging.basicConfig()
 sched = BlockingScheduler()
